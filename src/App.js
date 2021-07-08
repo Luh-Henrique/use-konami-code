@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
+import useKonamiCode from "./useKonamiCode";
+
 
 function App() {
+  const callback = () => console.log('Trapaça ativada!')
+  const {sequence, rightSequence} = useKonamiCode();
+    
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <h1>Konami Code</h1>
+          
+      <div className="imagem">
+          <img
+          alt="Konami Code: cima cima baixo baixo esquerda direita esquerda direita B A"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Konami_Code.svg/1920px-Konami_Code.svg.png"
+          /> 
+      </div>
+
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {sequence.map((key, i)=>(
+            <b key={i}> {key}</b>
+          ))}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        
+        {rightSequence &&<h1>Trapaça Ativada</h1>}
     </div>
   );
 }
